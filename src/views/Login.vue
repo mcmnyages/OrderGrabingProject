@@ -46,7 +46,7 @@
       if (isLogin.value) {
         const user = await getUserByUsernameAndPassword(username.value, password.value);
         userStore.loginUser(user);
-        router.push('/dashboard');
+        router.push('/dashboard/orders');
       } else {
         // Simulate registration (This can be extended later)
         alert("Registration functionality will be implemented soon.");
