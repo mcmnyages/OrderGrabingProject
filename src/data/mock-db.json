@@ -1,0 +1,101 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "username": "john_doe",
+        "email": "john.doe@example.com",
+        "password": "password123", 
+        "profile_picture": "https://images.pexels.com/photos/845457/pexels-photo-845457.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "balance": 500.75,
+        "created_at": "2024-01-01T10:00:00Z"
+      },
+      {
+        "id": 2,
+        "username": "jane_doe",
+        "email": "jane.doe@example.com",
+        "password": "securepassword456",
+        "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "balance": 1200.50,
+        "created_at": "2024-02-01T12:00:00Z"
+      }
+    ],
+    "orders": [
+      {
+        "id": 101,
+        "user_id": 1,
+        "image":"https://img.freepik.com/free-vector/household-appliances-realistic-composition_1284-65307.jpg?t=st=1728571841~exp=1728575441~hmac=5361489a80a9b5a0bb56f557c81b38473528c4e2e6b4100d733bf5613366a508&w=1060",
+        "alt":"image description",
+        "description": "Electronics Bundle",
+        "price": 499.99,
+        "status": "grabbed",
+        "expiration_time": "2024-12-01T10:00:00Z",
+        "created_at": "2024-11-01T09:00:00Z"
+      },
+      {
+        "id": 102,
+        "user_id": 1,
+        "image":"https://img.freepik.com/free-vector/household-appliances-realistic-kitchen_1284-69261.jpg?size=626&ext=jpg&ga=GA1.1.1498970017.1728571831&semt=ais_hybrid",
+        "alt":"image description",
+        "description": "Home Decor Set",
+        "price": 199.99,
+        "status": "completed",
+        "expiration_time": "2024-12-01T12:00:00Z",
+        "created_at": "2024-11-05T11:00:00Z"
+      },
+      {
+        "id": 103,
+        "user_id": 2,
+        "image":"https://img.freepik.com/premium-photo/black-silver-appliance-with-black-handle-black-silver-handle_1192063-63326.jpg?size=626&ext=jpg",
+        "alt":"image description",
+        "description": "Fitness Equipment",
+        "price": 299.99,
+        "status": "grabbed",
+        "expiration_time": "2024-12-02T14:00:00Z",
+        "created_at": "2024-11-10T13:00:00Z"
+      }
+    ],
+    "transactions": [
+      {
+        "id": 201,
+        "user_id": 1,
+        "type": "recharge",
+        "amount": 200.00,
+        "date": "2024-10-01T10:00:00Z"
+      },
+      {
+        "id": 202,
+        "user_id": 1,
+        "type": "withdraw",
+        "amount": 100.00,
+        "date": "2024-10-02T14:00:00Z"
+      },
+      {
+        "id": 203,
+        "user_id": 2,
+        "type": "recharge",
+        "amount": 500.00,
+        "date": "2024-10-03T11:30:00Z"
+      }
+    ],
+    "available_orders": [
+      {
+        "id": 104,
+        "image":"https://img.freepik.com/premium-photo/set-household-kitchen-appliances-microwave-oven-washing-machine-refrigerator_1197797-258866.jpg?size=626&ext=jpg&ga=GA1.1.1498970017.1728571831&semt=ais_hybrid",
+       "alt":"image description",
+        "description": "Kitchen Appliance Set",
+        "price": 150.00,
+        "available": true,
+        "created_at": "2024-11-15T14:00:00Z"
+      },
+      {
+        "id": 105,
+        "image":"https://img.freepik.com/premium-photo/set-household-kitchen-appliances-microwave-oven-washing-machine-refrigerator_1197797-257963.jpg?size=626&ext=jpg&ga=GA1.1.1498970017.1728571831&semt=ais_hybrid",
+       "alt":"image description",
+        "description": "Gaming Console",
+        "price": 450.00,
+        "available": true,
+        "created_at": "2024-11-18T15:00:00Z"
+      }
+    ]
+  }
+  
