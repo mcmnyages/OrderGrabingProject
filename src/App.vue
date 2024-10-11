@@ -2,11 +2,13 @@
 <!-- src/App.vue -->
 <template>
   <div id="app">
-    <router-view />
+    <RouterView />
   </div>
 </template>
 
 <script setup>
+import { RouterView } from 'vue-router';
+
 // No extra logic needed here; this is the app wrapper
 </script>
 

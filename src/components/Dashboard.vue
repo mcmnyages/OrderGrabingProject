@@ -12,7 +12,7 @@
         </div>
         <nav class="nav-links">
           <router-link v-for="link in navLinks" :key="link.to" :to="link.to" class="sidebar-link" :class="{ 'only-icon': isCollapsed }">
-            <i :class="link.icon"></i>
+            <i :class="link.icon " class="w3-large" ></i>
             <span v-if="!isCollapsed">{{ link.text }}</span>
           </router-link>
         </nav>
@@ -20,7 +20,7 @@
   
       <div class="main-content">
         <header>
-          <h1 class="">Welcome, {{ user?.username }}</h1>
+          <h1 class="welcome">Welcome, {{ user?.username }}</h1>
         </header>
     
         <main>

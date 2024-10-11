@@ -1,28 +1,8 @@
-<template>
-    <div class="auth-page">
-      <div class="auth-card">
-        <h2>{{ isLogin ? 'Login' : 'Register' }}</h2>
-        <form @submit.prevent="handleSubmit">
-          <div class="input-group">
-            <label for="username">Username</label>
-            <input v-model="username" type="text" id="username" required />
-          </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input v-model="password" type="password" id="password" required />
-          </div>
-          <button type="submit" class="submit-button">
-            {{ isLogin ? 'Login' : 'Register' }}
-          </button>
-        </form>
-        <p class="toggle-mode" @click="toggleMode">
-          {{ isLogin ? "Don't have an account? Register" : "Already have an account? Login" }}
-        </p>
-      </div>
-    </div>
-  </template>
-  
-  <script setup>
+
+
+<script setup>
+import Nav from '@/components/Nav.vue';
+import Footer from '@/components/Footer.vue';
   import { ref } from 'vue';
   import { useRouter } from 'vue-router';
   import { useUserStore } from '@/store/user';
@@ -56,14 +36,53 @@
     }
   };
   </script>
+
+
+
+
+<template>
+  <div class="login_page">
+  <Nav/>
+    <div class="auth-page">
+      <div class="auth-card">
+        <h2>{{ isLogin ? 'Login' : 'Register' }}</h2>
+        <form @submit.prevent="handleSubmit">
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input v-model="username" type="text" id="username" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input v-model="password" type="password" id="password" required />
+          </div>
+          <button type="submit" class="submit-button">
+            {{ isLogin ? 'Login' : 'Register' }}
+          </button>
+        </form>
+        <p class="toggle-mode" @click="toggleMode">
+          {{ isLogin ? "Don't have an account? Register" : "Already have an account? Login" }}
+        </p>
+      </div>
+    </div>
+    <Footer/>
+    </div>
+   
+  </template>
+  
+  
   
   <style scoped>
+  .login_page{
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+
+  }
+
   .auth-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    min-height: 82vh;
+    
   }
   
   .auth-card {

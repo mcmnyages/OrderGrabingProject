@@ -1,14 +1,16 @@
+<script setup>
+import Nav from '@/components/Nav.vue';
+import Footer from '@/components/Footer.vue';
+
+</script>
+
+
+
+
+
 <template>
   <div class="landing-page">
-    <header>
-      <h1 class="logo">Amazonsz</h1>
-      <nav>
-        <a v-for="link in navLinks" :key="link.to" :href="link.to" class="nav-link">
-          {{ link.text }}
-        </a>
-      </nav>
-    </header>
-
+    <Nav/>
     <main>
       <h2 class="main-title">Welcome to the Best Deals Marketplace</h2>
       <p class="main-description">Explore the world of great deals, exclusive offers, and more!</p>
@@ -16,22 +18,11 @@
         <button class="get-started-button">Get Started</button>
       </a>
     </main>
-
-    <footer>
-      <p>&copy; {{ currentYear }} Amazonsz E-commerce</p>
-    </footer>
+<Footer/>
   </div>
 </template>
 
-<script setup>
-const navLinks = [
-  { to: '/about', text: 'About' },
-  { to: '/contact', text: 'Contact' },
-  { to: '/help', text: 'Help' }
-];
 
-const currentYear = new Date().getFullYear();
-</script>
 
 <style scoped>
 .landing-page {
@@ -43,37 +34,6 @@ const currentYear = new Date().getFullYear();
   color: #fff;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #ffd700;
-}
 
 main {
   flex: 1;
@@ -115,11 +75,7 @@ main {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.1);
-}
+
 
 @keyframes fadeInDown {
   from {

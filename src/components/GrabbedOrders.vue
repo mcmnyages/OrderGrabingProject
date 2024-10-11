@@ -1,3 +1,56 @@
+
+
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { getUserOrders } from '@/mockApi'
+import { useUserStore } from '@/store/user'
+
+const userStore = useUserStore()
+const grabbedOrders = ref([])
+const searchTerm = ref('')
+const sortBy = ref('time-desc')
+
+const filteredOrders = computed(() => {
+  let result = grabbedOrders.value.filter(order => 
+    order.description.toLowerCase().includes(searchTerm.value.toLowerCase())
+  )
+
+  switch (sortBy.value) {
+    case 'price-asc':
+      return result.sort((a, b) => a.price - b.price)
+    case 'price-desc':
+      return result.sort((a, b) => b.price - a.price)
+    case 'time-asc':
+      return result.sort((a, b) => a.grabbedAt - b.grabbedAt)
+    case 'time-desc':
+      return result.sort((a, b) => b.grabbedAt - a.grabbedAt)
+    default:
+      return result
+  }
+})
+
+onMounted(async () => {
+  try {
+    grabbedOrders.value = await getUserOrders(userStore.user.id)
+  } catch (error) {
+    console.error('Failed to fetch grabbed orders:', error)
+  }
+})
+
+const formatTime = (timestamp) => {
+  const date = new Date(timestamp)
+  return date.toLocaleString()
+}
+
+const isExpired = (order) => {
+  return new Date() > new Date(order.expirationTime)
+}
+</script>
+
+
+
+
+
 <template>
     <div class="grabbed-orders">
       <h1>Your Grabbed Orders</h1>
@@ -28,52 +81,7 @@
     </div>
   </template>
   
-  <script setup>
-  import { ref, computed, onMounted } from 'vue'
-  import { getUserOrders } from '@/mockApi'
-  import { useUserStore } from '@/store/user'
-  
-  const userStore = useUserStore()
-  const grabbedOrders = ref([])
-  const searchTerm = ref('')
-  const sortBy = ref('time-desc')
-  
-  const filteredOrders = computed(() => {
-    let result = grabbedOrders.value.filter(order => 
-      order.description.toLowerCase().includes(searchTerm.value.toLowerCase())
-    )
-  
-    switch (sortBy.value) {
-      case 'price-asc':
-        return result.sort((a, b) => a.price - b.price)
-      case 'price-desc':
-        return result.sort((a, b) => b.price - a.price)
-      case 'time-asc':
-        return result.sort((a, b) => a.grabbedAt - b.grabbedAt)
-      case 'time-desc':
-        return result.sort((a, b) => b.grabbedAt - a.grabbedAt)
-      default:
-        return result
-    }
-  })
-  
-  onMounted(async () => {
-    try {
-      grabbedOrders.value = await getUserOrders(userStore.user.id)
-    } catch (error) {
-      console.error('Failed to fetch grabbed orders:', error)
-    }
-  })
-  
-  const formatTime = (timestamp) => {
-    const date = new Date(timestamp)
-    return date.toLocaleString()
-  }
-  
-  const isExpired = (order) => {
-    return new Date() > new Date(order.expirationTime)
-  }
-  </script>
+ 
   
   <style scoped>
   .grabbed-orders {

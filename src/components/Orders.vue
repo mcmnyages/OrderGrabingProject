@@ -71,7 +71,7 @@
             <img :src="order.image" :alt="order.alt">
             <h3>{{ order.description }}</h3>
             <p class="order-price">${{ order.price.toFixed(2) }}</p>
-            <p class="order-time">Posted: {{ formatTime(order.timestamp) }}</p>
+            <p class="order-time">Posted: {{ formatTime(order.created_at) }}</p>
           </div>
           <button @click="grabOrder(order)" class="grab-button" :disabled="order.grabbed">
             {{ order.grabbed ? 'Grabbed' : 'Grab' }}
@@ -87,7 +87,7 @@
   <style scoped>
   .order-grabbing-system {
     padding: 2rem;
-    background-color: #f4f7f6;
+    background-color: #b1b4b3;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }

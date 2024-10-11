@@ -7,6 +7,9 @@ import Wallet from '@/components/Wallet.vue';
 import Settings from '@/components/Settings.vue';
 import Account from '@/components/Account.vue';
 import GrabbedOrders from '@/components/GrabbedOrders.vue';
+import About from '@/views/About.vue';
+import Contact from '@/views/Contact.vue';
+import Help from '@/views/Help.vue';
 
 const routes = [
   {
@@ -19,6 +22,25 @@ const routes = [
     name: 'Login',
     component: Login,
   },
+
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+  },
+
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
+  },
+
+  {
+    path: '/help',
+    name: 'Help',
+    component: Help,
+  },
+
   {
     path: '/dashboard',
     name: 'Dashboard',

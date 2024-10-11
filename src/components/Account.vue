@@ -51,7 +51,7 @@
   
 .account-page img{
     width: 450px;
-    height: inherit;
+    height: 300px;
     margin-bottom: 40px;
 }
 
