@@ -63,18 +63,20 @@ const isExpired = (order) => {
           <option value="time-desc">Grabbed: Newest First</option>
         </select>
       </div>
+      
       <div class="orders-container">
         <div v-if="filteredOrders.length > 0" v-for="order in filteredOrders" :key="order.id" class="order-item">
           <div class="order-info">
             <img :src="order.image" :alt="order.alt">
             <h3>{{ order.description }}</h3>
             <p class="order-price">${{ order.price.toFixed(2) }}</p>
-            <p class="order-time">Grabbed: {{ formatTime(order.grabbedAt) }}</p>
-            <p class="order-expiry">Expires: {{ formatTime(order.expirationTime) }}</p>
+            <p class="order-time">Grabbed: {{ formatTime(order.created_at) }}</p>
+            <p class="order-expiry">Expires: {{ formatTime(order.expiration_time) }}</p>
           </div>
           <div class="order-status" :class="{ 'expired': isExpired(order) }">
             {{ isExpired(order) ? 'Expired' : 'Active' }}
           </div>
+          
         </div>
         <p v-else class="no-orders">You haven't grabbed any orders yet.</p>
       </div>

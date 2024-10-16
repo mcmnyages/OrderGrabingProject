@@ -26,6 +26,7 @@ const toggleMode = () => {
   username.value = '';
   email.value = '';
   phoneNumber.value = '';
+  country.value = ref('')
   cryptoWallet.value = '';
   password.value = '';
 };
