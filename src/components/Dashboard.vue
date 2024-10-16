@@ -99,7 +99,7 @@ onMounted(() => {
           <!-- Add logout button -->
           <button
             @click="logout"
-            class="w-full text-left px-4 py-2 hover:bg-gray-700 transition-colors duration-200"
+            class="w-full text-left px-4 py-2 bg-red-800 hover:bg-red-1000 transition-colors duration-200"
             :class="{ 'text-center': isCollapsed }"
           >
             <i class="fa fa-sign-out mr-2"></i>
