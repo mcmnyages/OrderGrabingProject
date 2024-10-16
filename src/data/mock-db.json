@@ -95,6 +95,25 @@
         "price": 450.00,
         "available": true,
         "created_at": "2024-11-18T15:00:00Z"
+      },
+      {
+        "id": 106,
+        "image":"https://th.bing.com/th/id/OIP.onvKkJpFHW4XmJcd3ewRZAHaHa?rs=1&pid=ImgDetMain",
+       "alt":"image description",
+        "description": "Sofasets",
+        "price": 1450.00,
+        "available": true,
+        "created_at": "2024-11-18T13:00:00Z"
+      }
+      ,
+      {
+        "id": 107,
+        "image":"https://th.bing.com/th/id/R.a9bdf45ba8c0bd00ddd0de5393110688?rik=PbJB4Pdffvk6cA&pid=ImgRaw&r=0",
+       "alt":"image description",
+        "description": "Washing Machine",
+        "price": 950.00,
+        "available": true,
+        "created_at": "2024-11-18T12:00:00Z"
       }
     ]
   }
