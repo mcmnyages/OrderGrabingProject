@@ -7,6 +7,7 @@
         "password": "password123", 
         "profile_picture": "https://images.pexels.com/photos/845457/pexels-photo-845457.jpeg?auto=compress&cs=tinysrgb&w=600",
         "balance": 500.75,
+        "level":2,
         "created_at": "2024-01-01T10:00:00Z"
       },
       {
@@ -15,7 +16,53 @@
         "email": "jane.doe@example.com",
         "password": "securepassword456",
         "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "balance": 900.50,
+        "level": 1,
+        "created_at": "2024-02-01T12:00:00Z"
+      }
+
+      ,
+      {
+        "id": 3,
+        "username": "erick_doe",
+        "email": "erick.doe@example.com",
+        "password": "password456",
+        "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "balance": 1000.50,
+        "level": 3,
+        "created_at": "2024-02-01T12:00:00Z"
+      }
+      ,
+      {
+        "id": 2,
+        "username": "patel_doe",
+        "email": "patel.doe@example.com",
+        "password": "patel456",
+        "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "balance": 1700.50,
+        "level": 1,
+        "created_at": "2024-02-01T12:00:00Z"
+      }
+      ,
+      {
+        "id": 2,
+        "username": "max_doe",
+        "email": "max.doe@example.com",
+        "password": "max456",
+        "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
         "balance": 1200.50,
+        "level": 2,
+        "created_at": "2024-02-01T12:00:00Z"
+      }
+      ,
+      {
+        "id": 2,
+        "username": "jeccy_doe",
+        "email": "jeccy.doe@example.com",
+        "password": "jeccy456",
+        "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "balance": 1200.50,
+        "level": 1,
         "created_at": "2024-02-01T12:00:00Z"
       }
     ],

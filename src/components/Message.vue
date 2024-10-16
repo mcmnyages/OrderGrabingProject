@@ -13,7 +13,7 @@ const props = defineProps({
 <style scoped>
 .transaction {
   background-color: #f8d7da;
-  color: #721c24;
+  color: #660912;
   padding: 10px;
   border: 1px solid #f5c6cb;
   border-radius: 5px;
