@@ -1,6 +1,6 @@
 <template>
   <div class="transaction">
-    <p>{{ transaction.user }} withdrew ${{ transaction.amount }} at {{ transaction.timestamp }}</p>
+    <p>User {{ transaction.user }} withdrew ${{ transaction.amount }} at {{ transaction.timestamp }}</p>
   </div>
 </template>
 
