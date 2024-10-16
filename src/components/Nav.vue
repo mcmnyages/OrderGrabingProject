@@ -40,6 +40,7 @@ header {
   }
   
   .logo {
+    text-decoration: none;
     font-size: 2rem;
     font-weight: bold;
     color: #fff;
@@ -49,6 +50,10 @@ header {
   nav {
     display: flex;
     gap: 1rem;
+  }
+
+  nav a{
+    font-size: 20px;
   }
   
   .nav-link {
