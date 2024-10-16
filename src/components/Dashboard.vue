@@ -45,6 +45,11 @@ const transactionsData = [
   { user: 'Alice', amount: 50, timestamp: '10:30 AM' },
   { user: 'Bob', amount: 70, timestamp: '11:45 AM' },
   { user: 'Charlie', amount: 100, timestamp: '1:15 PM' },
+  { user: 'Erick', amount: 500, timestamp: '1:15 PM' },
+  { user: 'Patel', amount: 170, timestamp: '1:15 PM' },
+  { user: 'Maxwell', amount: 600, timestamp: '1:15 PM' },
+  { user: 'Jessy', amount: 360, timestamp: '1:15 PM' },
+  { user: 'Stacy', amount: 140, timestamp: '1:15 PM' },
 ];
 
 const updateTransaction = () => {
