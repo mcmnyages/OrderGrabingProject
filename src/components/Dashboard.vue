@@ -117,8 +117,10 @@ onMounted(() => {
       <div class="flex-1 flex flex-col">
         <header class="bg-white shadow p-4">
           <h1 class="text-2xl font-semibold text-gray-800">Welcome, {{ user?.username }}</h1>
-          <p>Your Balance:{{user?.balance}}</p>
-          <p>Your Level:{{user?.level}}</p>
+          <div class="bg-blue-200 hover:bg-shadow-grey-400 font-black shadow w-2/4">
+          <p class="m-2">Your Balance:{{user?.balance}}</p>
+          <p class="m-2">Your Level:{{user?.level}}</p>
+          </div>
         </header>
         <div v-if="currentTransaction" class="fixed top-0.5/4 left-2/4 z-10">
           <Message :transaction="currentTransaction" />

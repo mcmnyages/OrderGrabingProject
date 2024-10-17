@@ -146,7 +146,7 @@ width: 250px;
   .order-price {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #6e8efb;
+    color: #4267e0;
   }
   
   .order-time {
@@ -158,7 +158,7 @@ width: 250px;
     width: 100%;
     padding: 0.5rem;
     margin-top: 1rem;
-    background-color: #6e8efb;
+    background-color: #1d4ff1;
     color: white;
     border: none;
     border-radius: 4px;
