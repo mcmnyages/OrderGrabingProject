@@ -1,176 +1,168 @@
+<script setup>
+import { ref, nextTick ,onMounted} from 'vue';
+import { useUserStore } from '@/store/user';
+import { getUserWallet } from '@/mockApi';
+
+// Mock data for transactions and payment methods
+const transactions = ref([]);
+
+
+
+const userStore = useUserStore();
+const balance = ref(userStore.user?.balance || 0);
+
+const isModalVisible = ref(false);
+const amount = ref(0);
+const selectedMethod = ref('');
+const actionType = ref('');
+
+
+
+onMounted(async () => {
+  try {
+    transactions.value = await getUserWallet(userStore.user?.id)
+  } catch (error) {
+    console.error('Failed to fetch grabbed orders:', error)
+  }
+})
+
+
+// Payment options with images
+const paymentMethods = [
+  { name: 'M-Pesa', image: 'https://th.bing.com/th/id/OIP.hU5JWeU_1WguktuIkXdeVAHaFZ?rs=1&pid=ImgDetMain' },
+  { name: 'PayPal', image: 'https://images.hindustantimes.com/tech/img/2023/08/07/1600x900/PAYPAL-HOLDINGS-RESULTS--0_1691422760889_1691422835377.JPG' },
+  { name: 'Bank Transfer', image: 'https://th.bing.com/th/id/OIP.T9kP_nc6c4UJ6NHDPT-mugHaFs?rs=1&pid=ImgDetMain' },
+  { name: 'Cryptocurrency', image: 'https://th.bing.com/th/id/OIP.Jshke68n8z1MQwIGy5hAbAHaE8?rs=1&pid=ImgDetMain' },
+];
+
+// Modal management
+const openModal = (method, type) => {
+  selectedMethod.value = method;
+  actionType.value = type;
+  isModalVisible.value = true;
+  nextTick(() => {
+    document.querySelector('input').focus();
+  });
+};
+
+const closeModal = () => {
+  isModalVisible.value = false;
+  amount.value = 0;  // Reset amount
+};
+
+// Transaction handling
+const handleTransaction = () => {
+  if (amount.value <= 0) {
+    alert('Please enter a valid amount');
+    return;
+  }
+  
+  if (actionType.value === 'recharge') {
+    balance.value += Number(amount.value);
+    transactions.value.push({
+      type: 'Recharge',
+      amount: amount.value,
+      method: selectedMethod.value,
+      date: new Date().toISOString().split('T')[0],
+    });
+  } else {
+    if (amount.value > balance.value) {
+      alert('Insufficient balance');
+      return;
+    }
+    balance.value -= Number(amount.value);
+    transactions.value.push({
+      type: 'Withdraw',
+      amount: amount.value,
+      method: selectedMethod.value,
+      date: new Date().toISOString().split('T')[0],
+    });
+  }
+
+  closeModal();
+};
+</script>
+
 <template>
-    <div class="wallet-page">
-      <h2>Your Wallet</h2>
-      <p>Current Balance: ${{ balance }}</p>
-      
-      <div class="wallet-actions">
-        <button @click="showRechargeModal" class="action-button">Recharge</button>
-        <button @click="showWithdrawModal" class="action-button">Withdraw</button>
-      </div>
-  
-      <!-- Recharge Modal -->
-      <div v-if="isRechargeModalVisible" class="modal">
-        <div class="modal-content">
-          <h3>Recharge Wallet</h3>
-          <input type="number" v-model="rechargeAmount" placeholder="Enter amount" class="input" />
-          <button @click="recharge" class="modal-button">Confirm</button>
-          <button @click="closeRechargeModal" class="modal-button">Cancel</button>
-        </div>
-      </div>
-  
-      <!-- Withdraw Modal -->
-      <div v-if="isWithdrawModalVisible" class="modal">
-        <div class="modal-content">
-          <h3>Withdraw Funds</h3>
-          <input type="number" v-model="withdrawAmount" placeholder="Enter amount" class="input" />
-          <button @click="withdraw" class="modal-button">Confirm</button>
-          <button @click="closeWithdrawModal" class="modal-button">Cancel</button>
-        </div>
+  <div class="wallet-page container mx-auto p-4">
+    <h2 class="text-center text-2xl font-bold">Your Wallet</h2>
+    <p class="text-center text-xl">Current Balance: ${{ balance }}</p>
+
+    <div class="payment-methods grid grid-cols-2 gap-4 my-4">
+      <div
+        v-for="method in paymentMethods"
+        :key="method.name"
+        class="payment-card border rounded-lg p-4 flex flex-col items-center cursor-pointer hover:shadow-lg"
+        @click="openModal(method.name, 'recharge')"
+      >
+        <img :src="method.image" alt="Payment Method" class="h-16 w-16 mb-2" />
+        <span class="font-medium">{{ method.name }}</span>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue';
-  import { useUserStore } from '@/store/user';
-  
-  const userStore = useUserStore();
-  const balance = ref(userStore.user?.balance || 0); // Fetch balance from the user store
-  
-  // Modals and amount management
-  const isRechargeModalVisible = ref(false);
-  const isWithdrawModalVisible = ref(false);
-  const rechargeAmount = ref(0);
-  const withdrawAmount = ref(0);
-  
-  // Modal management functions
-  const showRechargeModal = () => isRechargeModalVisible.value = true;
-  const closeRechargeModal = () => isRechargeModalVisible.value = false;
-  const showWithdrawModal = () => isWithdrawModalVisible.value = true;
-  const closeWithdrawModal = () => isWithdrawModalVisible.value = false;
-  
-  // Transaction functions
-  const recharge = () => {
-    balance.value += Number(rechargeAmount.value);
-    userStore.user.balance = balance.value; // Update globally
-    closeRechargeModal();
-  };
-  
-  const withdraw = () => {
-    if (withdrawAmount.value <= balance.value) {
-      balance.value -= Number(withdrawAmount.value);
-      userStore.user.balance = balance.value; // Update globally
-    } else {
-      alert('Insufficient balance');
-    }
-    closeWithdrawModal();
-  };
-  </script>
-  
-  <style scoped>
-  .wallet-page {
-    text-align: center;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
-    animation: fadeInDown 1s ease-out;
-  }
-  
-  .wallet-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .action-button {
-    background-color: #27ae60;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s;
-  }
-  
-  .action-button:hover {
-    background-color: #219150;
-    transform: scale(1.05);
-  }
-  
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    animation: fadeIn 0.5s ease-in;
-  }
-  
-  .modal-button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px;
-    transition: background-color 0.3s ease, transform 0.3s;
-  }
-  
-  .modal-button:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
-  }
-  
-  .input {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    width: calc(100% - 22px);
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  .input:focus {
-    border-color: #3498db;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  </style>
-  
+
+    <div v-if="isModalVisible" class="modal fixed inset-0 flex items-center justify-center bg-gray-600 bg-opacity-50">
+      <div class="modal-content bg-white rounded-lg shadow-lg p-6 w-1/4">
+        <h3 class="text-lg font-semibold mb-4">{{ actionType === 'recharge' ? 'Recharge' : 'Withdraw' }} Funds via {{ selectedMethod }}</h3>
+        <input
+          type="number"
+          v-model="amount"
+          class="w-full border rounded p-2 mb-4"
+          placeholder="Enter amount"
+        />
+        <footer class="flex justify-between">
+          <button @click="handleTransaction" class="bg-blue-500 text-white rounded px-4 py-2">Confirm</button>
+          <button @click="closeModal" class="bg-gray-300 rounded px-4 py-2">Cancel</button>
+        </footer>
+      </div>
+    </div>
+
+    <div class="transaction-history mt-8">
+      <h3 class="text-xl font-semibold mb-2">Transaction History</h3>
+      <ul class="bg-white shadow-md rounded-lg">
+        <li
+          v-for="(transaction, index) in transactions"
+          :key="index"
+          class="border-b p-4 flex justify-between"
+        >
+          <span>{{ transaction.type}} of <strong>${{ transaction.amount }} </strong>via {{ transaction.method }}</span>
+          <span class="text-gray-500">{{ transaction.date }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.wallet-page {
+  font-family: 'Roboto', sans-serif;
+}
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.payment-card {
+  transition: transform 0.2s;
+}
+
+.payment-card:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  z-index: 10;
+}
+
+.transaction-history {
+  margin-top: 2rem;
+}
+
+.transaction-history li {
+  transition: background 0.3s;
+}
+
+.transaction-history li:hover {
+  background: #f0f0f0;
+}
+</style>

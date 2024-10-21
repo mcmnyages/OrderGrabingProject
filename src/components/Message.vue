@@ -1,14 +1,23 @@
-<template>
-  <div class="transaction">
-    <p>User {{ transaction.user }} withdrew ${{ transaction.amount }} at {{ transaction.timestamp }}</p>
-  </div>
-</template>
-
 <script setup>
+import { useUserStore } from '@/store/user';
+import { computed } from 'vue';
 const props = defineProps({
   transaction: Object,
 });
+
+
+const userStore = useUserStore();
+const user = computed(() => userStore.user);
 </script>
+
+
+<template>
+  <div class="transaction">
+    <p>User {{ transaction.username }} withdrew <strong>${{ transaction.amount }}</strong> at {{ transaction.date }}</p>
+  </div>
+</template>
+
+
 
 <style scoped>
 .transaction {

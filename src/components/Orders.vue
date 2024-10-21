@@ -3,7 +3,7 @@
 <script setup>
   import { ref, computed, onMounted } from 'vue'
   import { getAvailableOrders } from '@/mockApi'
-  
+  import Message from './Message.vue';
   const orders = ref([])
   const searchTerm = ref('')
   const sortBy = ref('time-desc')

@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref, onMounted } from 'vue';
+import { getAllTransactions, getAllUsers } from '@/mockApi';
 import { useUserStore } from '@/store/user';
 import { useRouter } from 'vue-router';  // Add this import
 import Message from './Message.vue';
@@ -7,6 +8,7 @@ import Message from './Message.vue';
 const userStore = useUserStore();
 const router = useRouter();  // Add this line
 const user = computed(() => userStore.user);
+const usersData = ref([]);
 
 const navLinks = ref([
   { to: '/dashboard/orders', text: 'Order Grabbing', icon: 'fa fa-shopping-cart' },
@@ -39,30 +41,49 @@ const logout = async () => {
   }
 };
 
+
+
+const transactionsData = ref(null);
 let currentTransaction = ref(null);
 
-const transactionsData = [
-  { user: 'Alice', amount: 50, timestamp: '10:30 AM' },
-  { user: 'Bob', amount: 70, timestamp: '11:45 AM' },
-  { user: 'Charlie', amount: 100, timestamp: '1:15 PM' },
-  { user: 'Erick', amount: 500, timestamp: '1:15 PM' },
-  { user: 'Patel', amount: 170, timestamp: '1:15 PM' },
-  { user: 'Maxwell', amount: 600, timestamp: '1:15 PM' },
-  { user: 'Jessy', amount: 360, timestamp: '1:15 PM' },
-  { user: 'Stacy', amount: 140, timestamp: '1:15 PM' },
-];
+onMounted(async () => {
+  try {
+    const [transactions, users] = await Promise.all([getAllTransactions(), getAllUsers()]);
+    transactionsData.value = transactions;
+    usersData.value = users;
+    updateTransaction();  // Immediately generate a random transaction
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+  }
+});
+
 
 const updateTransaction = () => {
-  const randomIndex = Math.floor(Math.random() * transactionsData.length);
-  currentTransaction.value = transactionsData[randomIndex];
-  setTimeout(() => {
-    currentTransaction.value = null;
-  }, 5000);
+  if (transactionsData.value.length > 0 && usersData.value.length > 0) {
+    const randomIndex = Math.floor(Math.random() * transactionsData.value.length);
+    const randomTransaction = transactionsData.value[randomIndex];
+    
+    // Find the corresponding user for this transaction based on user_id
+    const user = usersData.value.find(u => u.id === randomTransaction.user_id);
+    
+    // Add the username to the transaction
+    currentTransaction.value = {
+      ...randomTransaction,
+      username: user ? user.username : 'Unknown User',
+    };
+    
+    // Reset the transaction after 2 seconds
+    setTimeout(() => {
+      currentTransaction.value = null;
+    }, 5000);
+  }
 };
+
+
 
 onMounted(() => {
   setInterval(() => {
-    updateTransaction();
+    updateTransaction();  // Only update if transactions are loaded
   }, 8000);
 });
 </script>

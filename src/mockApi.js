@@ -35,3 +35,16 @@ export const getUserWallet = (userId) => {
     resolve(transactions);
   });
 };
+
+export const getAllTransactions = () => {  // Correct the method spelling
+  return new Promise((resolve) => {
+    resolve(mockData.transactions);
+  });
+};
+
+
+export const getAllUsers = () => {
+  return new Promise((resolve) => {
+    resolve(mockData.users);  // Assuming mockData contains users
+  });
+};

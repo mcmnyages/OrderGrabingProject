@@ -7,7 +7,8 @@ export const useOrderStore = defineStore('orders', () => {
 
   const fetchAvailableOrders = () => {
     availableOrders.value = [
-      
+      { id: 1, description: 'Electronics Bundle', price: 499.99 },
+      { id: 2, description: 'Home Decor S', price: 199.99 },
     ];
   };
 

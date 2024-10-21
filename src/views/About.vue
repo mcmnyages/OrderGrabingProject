@@ -1,42 +1,54 @@
-
 <script setup>
 import Nav from '@/components/Nav.vue';
 import Footer from '@/components/Footer.vue';
-  </script>
-
-
+</script>
 
 <template>
-    <div class="about-page">
-        <Nav/>
-      <section class="hero">
+  <div class="about-page">
+    <Nav />
 
-        <h1>About Amazonsz E-commerce</h1>
-        <p>Your one-stop shop for the best deals in the market.</p>
-      </section>
-      <section class="content">
-        <h2>Our Story</h2>
-        <p>
-          Amazonsz E-commerce started with a simple mission: to provide the best deals and exclusive offers to our customers. Our journey began in 2024, and since then, we've been committed to delivering quality products and exceptional customer service.
-        </p>
-        <h2>Our Values</h2>
-        <ul>
-          <li>Customer Satisfaction</li>
-          <li>Quality Products</li>
-          <li>Exclusive Deals</li>
-          <li>Exceptional Service</li>
-        </ul>
-        <h2>Meet the Team</h2>
-        <p>
-          We have a diverse team of professionals dedicated to bringing you the best shopping experience. Our team works tirelessly to ensure that every customer is satisfied and every deal is a steal!
-        </p>
-      </section>
-      <Footer/>
-    </div>
-    
-  </template>
-  
- 
+    <!-- Hero Section -->
+    <section class="hero bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-16">
+      <h1 class="text-4xl font-bold mb-4">About Amazonsz E-commerce</h1>
+      <p class="text-lg">
+        Your ultimate destination for unbeatable deals, premium products, and top-notch service.
+      </p>
+    </section>
+
+    <!-- Main Content Section -->
+    <section class="content max-w-3xl mx-auto py-12 px-6">
+      <h2 class="text-3xl font-semibold text-blue-900 mb-4">Our Story</h2>
+      <p class="mb-6">
+        At Amazonsz E-commerce, we embarked on our journey in 2020 with a simple goal: 
+        to offer the best deals and create a seamless online shopping experience. 
+        Today, we proudly serve thousands of satisfied customers, delivering premium products across various categories.
+      </p>
+
+      <h2 class="text-3xl font-semibold text-blue-900 mb-4">Our Values</h2>
+      <ul class="list-disc pl-5 mb-6">
+        <li class="mb-2"><strong>Customer Satisfaction:</strong> Everything we do revolves around our customers.</li>
+        <li class="mb-2"><strong>Quality Products:</strong> Only the best makes it to our catalog.</li>
+        <li class="mb-2"><strong>Exclusive Deals:</strong> We secure the best bargains just for you.</li>
+        <li class="mb-2"><strong>Exceptional Service:</strong> Our customer support goes above and beyond.</li>
+      </ul>
+
+      <h2 class="text-3xl font-semibold text-blue-900 mb-4">Meet the Team</h2>
+      <p class="mb-6">
+        Behind Amazonsz is a passionate, diverse team that thrives on innovation and customer care. 
+        From product curators to support specialists, each member plays a vital role in ensuring a seamless shopping experience.
+        We work tirelessly to bring you the best products and deals, always with a smile!
+      </p>
+
+      <h2 class="text-3xl font-semibold text-blue-900 mb-4">Why Choose Us?</h2>
+      <p class="mb-6">
+        We believe that shopping should be enjoyable and stress-free. That’s why we offer a curated selection of high-quality products, exceptional customer support, and a shopping experience tailored to your needs.
+      </p>
+    </section>
+
+    <Footer />
+  </div>
+</template>
+
   
   <style scoped>
   .about-page {

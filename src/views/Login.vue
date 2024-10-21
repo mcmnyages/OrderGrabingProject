@@ -14,7 +14,7 @@ const lastName = ref('');
 const username = ref('');
 const email = ref('');
 const phoneNumber = ref('');
-const country = ref('')
+const country = ref('');
 const cryptoWallet = ref('');
 const password = ref('');
 const isLogin = ref(true);
@@ -26,7 +26,7 @@ const toggleMode = () => {
   username.value = '';
   email.value = '';
   phoneNumber.value = '';
-  country.value = ref('')
+  country.value = '';
   cryptoWallet.value = '';
   password.value = '';
 };
@@ -49,129 +49,62 @@ const handleSubmit = async () => {
 
 <template>
   <div class="login_page">
-    <Nav/>
-    <div class="auth-page">
-      <div class="auth-card">
-        <h2>{{ isLogin ? 'Login' : 'Register' }}</h2>
+    <Nav />
+    <div class="flex justify-center items-center min-h-screen bg-gradient-to-r from-indigo-500 to-purple-500">
+      <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">{{ isLogin ? 'Login' : 'Register' }}</h2>
         <form @submit.prevent="handleSubmit">
-          <div v-if="!isLogin" class="input-group">
-            <label for="firstName">First Name</label>
-            <input v-model="firstName" type="text" id="firstName" required />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="firstName" class="block text-gray-600 mb-1">First Name</label>
+            <input v-model="firstName" type="text" id="firstName" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="!isLogin" class="input-group">
-            <label for="lastName">Last Name</label>
-            <input v-model="lastName" type="text" id="lastName" required />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="lastName" class="block text-gray-600 mb-1">Last Name</label>
+            <input v-model="lastName" type="text" id="lastName" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="!isLogin" class="input-group">
-            <label for="email">Email</label>
-            <input v-model="email" type="email" id="email" required />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="email" class="block text-gray-600 mb-1">Email</label>
+            <input v-model="email" type="email" id="email" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="!isLogin" class="input-group">
-            <label for="username">Username</label>
-            <input v-model="username" type="text" id="username" required />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="username" class="block text-gray-600 mb-1">Username</label>
+            <input v-model="username" type="text" id="username" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="!isLogin" class="input-group">
-            <label for="phoneNumber">Phone Number</label>
-            <input v-model="phoneNumber" type="text" id="phoneNumber" required />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="phoneNumber" class="block text-gray-600 mb-1">Phone Number</label>
+            <input v-model="phoneNumber" type="text" id="phoneNumber" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="!isLogin" class="input-group">
-            <label for="country">Country</label>
-            <input v-model="country" type="text" id="country" required />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="country" class="block text-gray-600 mb-1">Country</label>
+            <input v-model="country" type="text" id="country" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="!isLogin" class="input-group">
-            <label for="cryptoWallet">Crypto Wallet (optional)</label>
-            <input v-model="cryptoWallet" type="text" id="cryptoWallet" />
+          <div v-if="!isLogin" class="mb-4">
+            <label for="cryptoWallet" class="block text-gray-600 mb-1">Crypto Wallet (optional)</label>
+            <input v-model="cryptoWallet" type="text" id="cryptoWallet" class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div v-if="isLogin" class="input-group">
-            <label for="loginId">Username or Email</label>
-            <input v-model="username" type="text" id="loginId" required />
+          <div v-if="isLogin" class="mb-4">
+            <label for="loginId" class="block text-gray-600 mb-1">Username or Email</label>
+            <input v-model="username" type="text" id="loginId" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input v-model="password" type="password" id="password" required />
+          <div class="mb-4">
+            <label for="password" class="block text-gray-600 mb-1">Password</label>
+            <input v-model="password" type="password" id="password" required class="w-full p-2 border border-gray-300 rounded" />
           </div>
-          <button type="submit" class="submit-button">
+          <button type="submit" class="w-full bg-indigo-500 text-white py-2 rounded hover:bg-indigo-600 transition duration-300">
             {{ isLogin ? 'Login' : 'Register' }}
           </button>
         </form>
-        <p class="toggle-mode" @click="toggleMode">
+        <p class="text-center text-indigo-500 mt-4 cursor-pointer hover:underline" @click="toggleMode">
           {{ isLogin ? "Don't have an account? Register" : "Already have an account? Login" }}
         </p>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <style scoped>
 .login_page {
   background: linear-gradient(135deg, #6e8efb, #a777e3);
-}
-
-.auth-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 82vh;
-}
-
-.auth-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-
-.input-group {
-  margin-bottom: 1rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #555;
-}
-
-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-.submit-button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #6e8efb;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.submit-button:hover {
-  background-color: #5c7cfa;
-}
-
-.toggle-mode {
-  text-align: center;
-  margin-top: 1rem;
-  color: #6e8efb;
-  cursor: pointer;
-}
-
-.toggle-mode:hover {
-  text-decoration: underline;
 }
 </style>

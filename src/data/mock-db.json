@@ -5,6 +5,8 @@
         "username": "john_doe",
         "email": "john.doe@example.com",
         "password": "password123", 
+        "deposit_amount": 10000,
+        "deposit_source": "bank",
         "profile_picture": "https://images.pexels.com/photos/845457/pexels-photo-845457.jpeg?auto=compress&cs=tinysrgb&w=600",
         "balance": 500.75,
         "level":2,
@@ -15,6 +17,8 @@
         "username": "jane_doe",
         "email": "jane.doe@example.com",
         "password": "securepassword456",
+        "deposit_amount": 10000,
+        "deposit_source": "crypto",
         "profile_picture": "https://images.pexels.com/photos/1848565/pexels-photo-1848565.jpeg?auto=compress&cs=tinysrgb&w=600",
         "balance": 900.50,
         "level": 1,
@@ -27,6 +31,8 @@
         "username": "erick_doe",
         "email": "erick.doe@example.com",
         "password": "password456",
+        "deposit_amount": 10000,
+        "deposit_source": "crypto",
         "profile_picture": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.allprodad.com%2Fwp-content%2Fuploads%2F2021%2F03%2F05-12-21-happy-people.jpg&f=1&nofb=1&ipt=eeea70adf0bb67e124367c053c6da927477d175a26977388badca2ae0f1998b4&ipo=images",
         "balance": 1000.50,
         "level": 3,
@@ -34,9 +40,11 @@
       }
       ,
       {
-        "id": 2,
+        "id": 4,
         "username": "patel_doe",
         "email": "patel.doe@example.com",
+        "deposit_amount": 10000,
+        "deposit_source": "mpesa",
         "password": "patel456",
         "profile_picture": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.UGlKxiZQylR3CnJIXSbFIAHaLL%26pid%3DApi&f=1&ipt=6cf9c0fb9a70be771d06d14d484f80ae4b03146e833b926c38b8ff8c7e7a327d&ipo=images",
         "balance": 1700.50,
@@ -45,10 +53,12 @@
       }
       ,
       {
-        "id": 2,
+        "id": 5,
         "username": "max_doe",
         "email": "max.doe@example.com",
         "password": "max456",
+        "deposit_amount": 1000,
+        "deposit_source": "bank",
         "profile_picture": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.jG20xZ4rIJfvN9q5oN2OBwHaEo%26pid%3DApi&f=1&ipt=28a4d643dfd30ab0c2c2e6c7baf1befbb266f6f26d64f9c2583efecc424e61bd&ipo=images",
         "balance": 1200.50,
         "level": 2,
@@ -56,10 +66,12 @@
       }
       ,
       {
-        "id": 2,
+        "id": 6,
         "username": "jeccy_doe",
         "email": "jeccy.doe@example.com",
         "password": "jeccy456",
+        "deposit_amount": 1300,
+        "deposit_source": "crypto",
         "profile_picture": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fphotos%2Fyoung-woman-portrait-in-the-city-picture-id1009749608%3Fk%3D6%26m%3D1009749608%26s%3D612x612%26w%3D0%26h%3DckLkBgedCLmhG-TBvm48s6pc8kBfHt7Ppec13IgA6bo%3D&f=1&nofb=1&ipt=002449b3400c7f78eb014a6b0ea9ec170655f39936a533132d5dc891f21adb90&ipo=images",
         "balance": 1200.50,
         "level": 1,
@@ -73,10 +85,14 @@
         "image":"https://img.freepik.com/free-vector/household-appliances-realistic-composition_1284-65307.jpg?t=st=1728571841~exp=1728575441~hmac=5361489a80a9b5a0bb56f557c81b38473528c4e2e6b4100d733bf5613366a508&w=1060",
         "alt":"image description",
         "description": "Electronics Bundle",
+        "quantity": 2,
+        "total_amount": 100,
+        "commission_amount": 10,
         "price": 499.99,
         "status": "grabbed",
         "expiration_time": "2024-12-01T10:00:00Z",
-        "created_at": "2024-11-01T09:00:00Z"
+        "created_at": "2024-11-01T09:00:00Z",
+        "updated_at": "2023-04-01T13:15:00"
       },
       {
         "id": 102,
@@ -87,18 +103,33 @@
         "price": 199.99,
         "status": "completed",
         "expiration_time": "2024-12-01T12:00:00Z",
-        "created_at": "2024-11-05T11:00:00Z"
+        "created_at": "2024-11-05T11:00:00Z",
+        "updated_at": "2023-04-01T13:15:00"
       },
       {
         "id": 103,
-        "user_id": 2,
+        "user_id": 3,
         "image":"https://img.freepik.com/premium-photo/black-silver-appliance-with-black-handle-black-silver-handle_1192063-63326.jpg?size=626&ext=jpg",
         "alt":"image description",
         "description": "Fitness Equipment",
         "price": 299.99,
         "status": "grabbed",
         "expiration_time": "2024-12-02T14:00:00Z",
-        "created_at": "2024-11-10T13:00:00Z"
+        "created_at": "2024-11-10T13:00:00Z",
+        "updated_at": "2023-04-01T13:15:00"
+      }
+      ,
+      {
+        "id": 103,
+        "user_id": 4,
+        "image":"https://img.freepik.com/premium-photo/black-silver-appliance-with-black-handle-black-silver-handle_1192063-63326.jpg?size=626&ext=jpg",
+        "alt":"image description",
+        "description": "Fitness Equipment",
+        "price": 299.99,
+        "status": "grabbed",
+        "expiration_time": "2024-12-02T14:00:00Z",
+        "created_at": "2024-11-10T13:00:00Z",
+        "updated_at": "2023-04-01T13:15:00"
       }
     ],
     "transactions": [
@@ -106,6 +137,7 @@
         "id": 201,
         "user_id": 1,
         "type": "recharge",
+        "method":"mpesa",
         "amount": 200.00,
         "date": "2024-10-01T10:00:00Z"
       },
@@ -113,6 +145,7 @@
         "id": 202,
         "user_id": 1,
         "type": "withdraw",
+        "method":"crypto",
         "amount": 100.00,
         "date": "2024-10-02T14:00:00Z"
       },
@@ -120,6 +153,7 @@
         "id": 203,
         "user_id": 2,
         "type": "recharge",
+        "method":"bank",
         "amount": 500.00,
         "date": "2024-10-03T11:30:00Z"
       }
