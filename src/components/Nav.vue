@@ -3,10 +3,11 @@ import { RouterLink, useRoute } from 'vue-router'; // Import Vue Router hooks
 
 // Define navigation links
 const navLinks = [
+  { to: '/login', text: 'Login/Signup' },
   { to: '/about', text: 'About' },
   { to: '/contact', text: 'Contact' },
   { to: '/help', text: 'Help' },
-  { to: '/login', text: 'Login/Signup' }
+  
 ];
 
 const route = useRoute(); // Access current route information
