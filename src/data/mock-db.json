@@ -156,6 +156,30 @@
         "method":"bank",
         "amount": 500.00,
         "date": "2024-10-03T11:30:00Z"
+      }      ,
+      {
+        "id": 204,
+        "user_id": 4,
+        "type": "withdraw",
+        "method":"paypal",
+        "amount": 1500.00,
+        "date": "2024-11-03T11:30:00Z"
+      },
+      {
+        "id": 205,
+        "user_id": 3,
+        "type": "recharge",
+        "method":"mpesa",
+        "amount": 700.00,
+        "date": "2024-9-03T11:30:00Z"
+      },
+      {
+        "id": 206,
+        "user_id": 5,
+        "type": "recharge",
+        "method":"bank",
+        "amount": 500.00,
+        "date": "2024-10-03T12:30:00Z"
       }
     ],
     "available_orders": [
