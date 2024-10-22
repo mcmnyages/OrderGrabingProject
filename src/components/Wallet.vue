@@ -46,7 +46,7 @@ const handleTransaction = () => {
   if (actionType.value === 'recharge') {
     balance.value += Number(amount.value);
     transactions.value.push({
-      type: 'Recharge',
+      type: 'recharge',
       amount: amount.value,
       method: selectedMethod.value,
       date: new Date().toISOString().split('T')[0],
@@ -58,7 +58,7 @@ const handleTransaction = () => {
     }
     balance.value -= Number(amount.value);
     transactions.value.push({
-      type: 'Withdraw',
+      type: 'rithdraw',
       amount: amount.value,
       method: selectedMethod.value,
       date: new Date().toISOString().split('T')[0],
